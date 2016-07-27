@@ -1,15 +1,15 @@
 'use strict';
 
-export default function forceDirectedGraphDirective(d3) {
+export default function forceDirectedGraphDirective(d3, chartDataService) {
   return {
     restrict: 'E',
     scope: {},
     link: link
   };
-
+  
   function link(scope, element) {
-    var width = 900;
-    var height = 800;
+    var width = 800;
+    var height = 600;
     var svg = d3.select(element[0]).append('svg')
       .attr('width',  width)
       .attr('height', height);
@@ -20,21 +20,23 @@ export default function forceDirectedGraphDirective(d3) {
       .force('link', d3.forceLink().id(function(d) { return d.id; }))
       .force('charge', d3.forceManyBody())
       .force('center', d3.forceCenter(width / 2, height / 2));
+      
+    chartDataService
+      .load()
+      .then((data) => renderGraph(data));
 
-    d3.json('../data.json', function(error, graph) {
-      if (error) throw error;
-
+    function renderGraph(data) {
       var link = svg.append('g')
         .attr('class', 'links')
         .selectAll('line')
-        .data(graph.links)
+        .data(data.links)
         .enter().append('line')
         .attr('stroke-width', function(d) { return Math.sqrt(d.value); });
 
       var node = svg.append('g')
         .attr('class', 'nodes')
         .selectAll('circle')
-        .data(graph.nodes)
+        .data(data.nodes)
         .enter().append('circle')
         .attr('r', 5)
         .attr('fill', function(d) { return color(d.group); })
@@ -47,11 +49,11 @@ export default function forceDirectedGraphDirective(d3) {
         .text(function(d) { return d.id; });
 
       simulation
-        .nodes(graph.nodes)
+        .nodes(data.nodes)
         .on('tick', ticked);
 
       simulation.force('link')
-        .links(graph.links);
+        .links(data.links);
 
       function ticked() {
         link
@@ -64,7 +66,7 @@ export default function forceDirectedGraphDirective(d3) {
           .attr('cx', function(d) { return d.x; })
           .attr('cy', function(d) { return d.y; });
       }
-    });
+    }
 
     function dragstarted(d) {
       if (!d3.event.active) simulation.alphaTarget(0.3).restart();
@@ -85,4 +87,4 @@ export default function forceDirectedGraphDirective(d3) {
   }
 }
 
-forceDirectedGraphDirective.$inject = ['d3.js'];
+forceDirectedGraphDirective.$inject = ['d3.js', 'chartDataService'];
