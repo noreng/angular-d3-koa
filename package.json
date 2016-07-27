@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/noreng/angular-d3-koa/issues"
   },
-  "homepage": "https://github.com/noreng/angular-d3-koa#readme"
+  "homepage": "https://github.com/noreng/angular-d3-koa#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "webpack": "^1.13.1"
+  }
 }
