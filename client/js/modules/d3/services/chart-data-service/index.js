@@ -1,15 +1,17 @@
 'use strict';
 
-import graphData from './data.js';
-
 export default class ChartDataService {
 
-  constructor() {
-    this.data = graphData
+  constructor($http) {
+    this._$http = $http;
   }
 
   load() {
-    return Promise.resolve(this.data);
+    return this._$http
+      .get('/api/read/')
+      .then((response) => response.data);
   }
 
 }
+
+ChartDataService.$inject = ['$http'];

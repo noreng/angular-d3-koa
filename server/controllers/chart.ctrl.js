@@ -1,5 +1,7 @@
 'use strict';
 
+const data = require('./data.js')
+
 exports.read = function* () {
-  this.body = {'Hello': 'Koa!'};
+  this.body = data;
 };
