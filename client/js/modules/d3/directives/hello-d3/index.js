@@ -9,7 +9,7 @@ export default function helloD3Directive(d3) {
 
   function link(scope, element) {
     d3.select(element[0]).append('h2')
-      .text('Hello, D3!');
+      .text('Hello D3!');
   }
 }
 

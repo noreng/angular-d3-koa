@@ -26,6 +26,7 @@ export default function forceDirectedGraphDirective(d3, chartDataService) {
       .then((chartData) => renderGraph(chartData.data));
 
     function renderGraph(data) {
+      if (!data) return;
       var link = svg.append('g')
         .attr('class', 'links')
         .selectAll('line')

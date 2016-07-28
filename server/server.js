@@ -5,7 +5,7 @@ const serve = require('koa-static');
 const router = require('koa-route');
 
 const chartCtrl = require('./controllers/chart.ctrl');
-const db = require('./db')
+const db = require('./db/models/');
 
 const app = koa();
 const port = 8080;
