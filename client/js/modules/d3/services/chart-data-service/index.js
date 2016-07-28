@@ -6,9 +6,9 @@ export default class ChartDataService {
     this._$http = $http;
   }
 
-  load() {
+  loadById(id) {
     return this._$http
-      .get('/api/read/')
+      .get('/api/read/' + id)
       .then((response) => response.data);
   }
 

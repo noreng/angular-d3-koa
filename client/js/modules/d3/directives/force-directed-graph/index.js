@@ -22,8 +22,8 @@ export default function forceDirectedGraphDirective(d3, chartDataService) {
       .force('center', d3.forceCenter(width / 2, height / 2));
       
     chartDataService
-      .load()
-      .then((data) => renderGraph(data));
+      .loadById(1)
+      .then((chartData) => renderGraph(chartData.data));
 
     function renderGraph(data) {
       var link = svg.append('g')

@@ -1,7 +1,7 @@
 'use strict';
 
-const data = require('./data.js')
+const chartService = require('../services/chart.service');
 
-exports.read = function* () {
-  this.body = data;
+exports.readById = function* (id) {
+  this.body = yield chartService.readById(id);
 };

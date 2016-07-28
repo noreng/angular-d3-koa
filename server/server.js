@@ -12,7 +12,7 @@ const port = 8080;
 
 app.use(serve(__dirname + '/../client'));
 
-app.use(router.get('/api/read/', chartCtrl.read));
+app.use(router.get('/api/read/:id', chartCtrl.readById));
 
 db.sequelize.sync()
   .then(() => {
