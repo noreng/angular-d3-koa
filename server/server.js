@@ -14,7 +14,7 @@ app.use(serve(__dirname + '/../client'));
 
 app.use(router.get('/api/read/', chartCtrl.read));
 
-db.sync()
+db.sequelize.sync()
   .then(() => {
     app.listen(port, () => console.log(`Listening on port ${port}`));
   });
