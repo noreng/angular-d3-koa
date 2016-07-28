@@ -3,7 +3,9 @@
 export default function forceDirectedGraphDirective(d3, chartDataService) {
   return {
     restrict: 'E',
-    scope: {},
+    scope: {
+      graphId: '='
+    },
     link: link
   };
   
@@ -22,7 +24,7 @@ export default function forceDirectedGraphDirective(d3, chartDataService) {
       .force('center', d3.forceCenter(width / 2, height / 2));
       
     chartDataService
-      .loadById(1)
+      .loadById(scope.graphId)
       .then((chartData) => renderGraph(chartData.data));
 
     function renderGraph(data) {
