@@ -12,3 +12,11 @@ svg {
   stroke: #fff;
   stroke-width: 2px;
 }
+
+.chart-input {
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 250px;
+  height: 2em;
+}

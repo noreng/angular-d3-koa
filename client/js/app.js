@@ -6,7 +6,7 @@ import d3module from './modules/d3';
 
 angular.module('d3App', [d3module, uiRouter])
   .config([ '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/force-directed-graph');
+    $urlRouterProvider.otherwise('/editable-chart');
     $stateProvider
       .state('force-directed-graph', {
         url: '/force-directed-graph',
@@ -15,5 +15,9 @@ angular.module('d3App', [d3module, uiRouter])
       .state('hello-d3', {
         url: '/hellod3',
         template: '<hello-d3></hello-d3>'
+      })
+      .state('editable-chart', {
+        url: '/editable-chart',
+        template: '<editable-chart></editable-chart>'
       })
   }]);
