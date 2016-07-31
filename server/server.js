@@ -19,5 +19,6 @@ app.use(router.get('/api/read/:id', chartCtrl.readById));
 
 db.sequelize.sync()
   .then(() => {
+    db.initChartData();
     app.listen(port, () => console.log(`Listening on port ${port}`));
   });
