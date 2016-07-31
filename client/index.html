@@ -7,6 +7,17 @@
     <script src="dist/app.bundle.js"></script>
   </head>
   <body ng-app="d3App" ng-strict-id>
+    <ul class="nav">
+      <li ui-sref-active="active">
+         <a ui-sref="hello-d3">Hello D3</a>
+      </li>
+      <li ui-sref-active="active">
+         <a ui-sref="editable-chart">Editable chart</a>
+      </li>
+      <li ui-sref-active="active">
+         <a ui-sref="force-directed-graph">Force directed graph</a>
+      </li>
+    </ul>
     <div ui-view></div>
   </body>
 </html>

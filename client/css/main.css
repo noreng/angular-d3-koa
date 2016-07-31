@@ -1,3 +1,26 @@
+.nav {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+    text-align: center;
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav a {
+    display: inline-block;
+    padding: 15px;
+    color: blue;
+    text-decoration: none;
+}
+
+.nav .active a {
+    color: red;
+    text-decoration: underline;
+}
+
 svg {
   display: block;
   margin: 0 auto;
