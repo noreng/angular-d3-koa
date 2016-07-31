@@ -30,7 +30,7 @@ export default function editableChartDirective(d3) {
       .innerRadius(radius - 60)
       .outerRadius(radius - 10);
 
-    var svg = d3.select('body').append('svg')
+    var svg = d3.select(element[0]).append('svg')
       .attr('width', width)
       .attr('height', height)
       .append('g')
